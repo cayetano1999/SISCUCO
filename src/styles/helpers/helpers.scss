@@ -36,7 +36,7 @@
 
     .#{$property-class-prefix-hyphen + $class-modifier} {
       @each $property in $properties {
-        #{$property}: $value !important;
+        #{$property}: $value;
       }
     }
   }
