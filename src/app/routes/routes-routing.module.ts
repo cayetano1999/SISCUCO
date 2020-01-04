@@ -63,6 +63,11 @@ const routes: Routes = [
         loadChildren: () => import('./extensions/extensions.module').then(m => m.ExtensionsModule),
       },
   { path: 'abc', loadChildren: () => import('./abc/abc.module').then(m => m.AbcModule) },
+  { path: 'accounts', loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule) },
+  { path: 'usersaccount', loadChildren: () => import('./usersaccount/usersaccount.module').then(m => m.UsersaccountModule) },
+  { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) },
+  { path: 'credits', loadChildren: () => import('./credits/credits.module').then(m => m.CreditsModule) },
+  { path: 'rol', loadChildren: () => import('./rol/rol.module').then(m => m.RolModule) },
     ],
   },
   {
