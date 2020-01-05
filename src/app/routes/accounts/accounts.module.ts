@@ -14,7 +14,8 @@ const COMPONENTS_DYNAMIC = [];
   ],
   declarations: [
     ...COMPONENTS,
-    ...COMPONENTS_DYNAMIC
+    ...COMPONENTS_DYNAMIC,
+    
   ],
   entryComponents: COMPONENTS_DYNAMIC
 })
