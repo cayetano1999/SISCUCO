@@ -1,6 +1,6 @@
 export class Rol {
-    IdRol: Number
-    Name: String
-    Estado: String
-    CreationDate: Date
+    idRol: Number
+    name: String
+    estado: String
+    creationDate: Date
 }

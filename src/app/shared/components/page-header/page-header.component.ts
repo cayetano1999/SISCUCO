@@ -16,6 +16,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() subtitle = '';
   @Input() nav: string[] = [];
   @Input() showBreadCrumb = true;
+  @Input() icon: String;
 
   constructor(private router: Router, private menuService: MenuService) {}
 

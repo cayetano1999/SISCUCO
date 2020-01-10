@@ -1,3 +1,73 @@
-<page-header [title]="'rolmanager'"></page-header>
+<page-header [icon]="'home'" [title]="'rolmanager'"></page-header>
 
-<p>rolmanager works!</p>
+<div>
+  
+  <mat-card class="card-style mt-5">
+
+    <div class="d-flex justify-content-around">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center img-head">
+      <img src="../../../../assets/images/rol/role.png" class="w-25 " alt="">
+    </div>
+  </div>
+
+    <h6 class="text-center mt-5">Lista de Roles</h6>
+    <p class="text-left">
+      <span matBadge="4" matBadgeOverlap="false">Roles</span>
+    </p>
+    <div class="table-responsive">
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+      <table *ngIf="!loading" mat-table [dataSource]="datasource" class="simple-table">
+        <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="idRol">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.idRol}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element" [class]="element.estado ? 'text-success': 'text-danger'"> {{element.estado}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="creationDate">
+          <th mat-header-cell *matHeaderCellDef> Creado </th>
+          <td mat-cell *matCellDef="let element"> {{element.creationDate | date:'MM/dd/yyyy HH:mm'}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <button color="primary" mat-icon-button
+                    aria-label="Example icon-button with a heart icon">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button color="warn" mat-icon-button aria-label="Example icon-button with a heart icon">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+      </table>
+
+
+
+    </div>
+  </mat-card>
+</div>
+
+
+<!-- <p>rolmanager works!</p> -->
+
+<!-- <button class="btn btn-danger">ok</button> -->
