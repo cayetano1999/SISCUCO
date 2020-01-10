@@ -3,6 +3,7 @@ import { RolService } from 'app/services/rolServices/rol.service';
 import { BaseRespository } from 'app/repository/baseRepository';
 import { Rol } from 'app/models/rol';
 import { Observable } from 'rxjs';
+import { NotificationService } from 'app/services/notification.service';
 
 
 
@@ -49,7 +50,7 @@ export class RolRolmanagerComponent implements OnInit {
     this.getAll()
     
   }
-  constructor(private _rolService:RolService) {
+  constructor(private _rolService:RolService, private _notificationService: NotificationService) {
     this.displayedColumns = ['idRol', 'name', 'estado', 'creationDate', 'actions'];
      this.datasource = this.rolItems;
   }
@@ -64,10 +65,13 @@ export class RolRolmanagerComponent implements OnInit {
         console.log(this.rolItems);
       }
       this.loading = false;
+      this._notificationService.show("Roles", "Roles Cargados", "success");
+
       return data;
     }),error=>{
       this.loading = false;
       console.log("Ha ocurrido un error al cargar los roles: "+error);
+      this._notificationService.show("Roles", "Ha ocrrido un error.", "error");
     };
   }
   // add(entity: Rol): Observable<Rol> {

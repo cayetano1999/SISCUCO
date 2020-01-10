@@ -1,22 +1,37 @@
 <page-header [icon]="'home'" [title]="'rolmanager'"></page-header>
 
-<div>
-  
+<div class="animated bounceInRight col-sm-12">
+
   <mat-card class="card-style mt-5">
 
     <div class="d-flex justify-content-around">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center img-head">
-      <img src="../../../../assets/images/rol/role.png" class="w-25 " alt="">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center img-head">
+        <img src="../../../../assets/images/rol/role.png" class="w-25 " alt="">
+      </div>
     </div>
-  </div>
 
     <h6 class="text-center mt-5">Lista de Roles</h6>
-    <p class="text-left">
-      <span matBadge="4" matBadgeOverlap="false">Roles</span>
-    </p>
+    <div>
+      <p class="text-left">
+        <span [matBadge]="1" matBadgeOverlap="false"><strong>Roles</strong></span>
+      </p>
+      <div class="float-right mr-5">
+        <p>
+          <button color="primary" mat-icon-button
+                      >
+                <mat-icon>add</mat-icon> Agregar
+              </button>
+        </p>
+      </div>
+    </div>
     <div class="table-responsive">
       <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
+      <mat-form-field appearance="legacy" class="col-sm-12 col-lg-4 pl-0">
+        <mat-label>Buscar Rol</mat-label>
+        <input matInput placeholder="Buscar Rol">
+        <mat-icon matSuffix color="warning">search</mat-icon>
+      </mat-form-field>
       <table *ngIf="!loading" mat-table [dataSource]="datasource" class="simple-table">
         <!--- Note that these columns can be defined in any order.
                       The actual rendered columns are set as a property on the row definition" -->
@@ -35,7 +50,8 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef> Estado </th>
-          <td mat-cell *matCellDef="let element" [class]="element.estado ? 'text-success': 'text-danger'"> {{element.estado}} </td>
+          <td mat-cell *matCellDef="let element"
+              [class]="element.estado ? 'text-success': 'text-danger'"> {{element.estado}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
@@ -60,9 +76,12 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
       </table>
-
-
-
+      <div  class="d-flex justify-content-around">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
+          <img src="../../../../assets/images/shared/sad.png" class="w-25 " alt="">
+          <p class="text-danger">No hay roles para mostrar</p>
+        </div>
+      </div>
     </div>
   </mat-card>
 </div>
