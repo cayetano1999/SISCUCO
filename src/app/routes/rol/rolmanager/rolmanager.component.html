@@ -11,17 +11,21 @@
     </div>
 
     <h6 class="text-center mt-5">Lista de Roles</h6>
-    <div>
-      <p class="text-left">
-        <span [matBadge]="1" matBadgeOverlap="false"><strong>Roles</strong></span>
-      </p>
-      <div class="float-right mr-5">
+
+    <div class="col-sm-12 bg-danger" >
+      
+      <div class="float-left mr-0">
         <p>
-          <button color="primary" mat-icon-button
-                      >
-                <mat-icon>add</mat-icon> Agregar
-              </button>
+          <span [matBadge]="getCountRol()" matBadgeOverlap="false"><strong>Roles</strong></span>
         </p>
+      </div>
+
+      <div class="float-right mr-2 mt-1">
+        
+          <button color="primary" mat-flat-button>
+            <mat-icon>add</mat-icon> Agregar
+          </button>
+        
       </div>
     </div>
     <div class="table-responsive">
@@ -76,7 +80,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
       </table>
-      <div  class="d-flex justify-content-around">
+      <div *ngIf="getCountRol()==0" class="d-flex justify-content-around">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
           <img src="../../../../assets/images/shared/sad.png" class="w-25 " alt="">
           <p class="text-danger">No hay roles para mostrar</p>

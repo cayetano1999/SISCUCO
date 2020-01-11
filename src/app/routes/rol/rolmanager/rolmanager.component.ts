@@ -83,6 +83,11 @@ export class RolRolmanagerComponent implements OnInit {
   // delete(id: Number): Observable<Rol> {
   //   throw new Error("Method not implemented.");
   // }
+
+  getCountRol(){
+    var count = this.datasource.length;
+    return count;
+  }
   
   
 
